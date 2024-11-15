@@ -1,0 +1,58 @@
+ANALISIS:
+
+1.1 Tujuan Sistem
+Aplikasi Data Pasien Rumah Sakit bertujuan untuk mengelola data pasien, dokter, dan kunjungan medis. Aplikasi ini akan membantu staf rumah sakit untuk:
+
+Menyimpan data pasien.
+Menyimpan data dokter.
+Mencatat riwayat kunjungan pasien.
+Menampilkan laporan kunjungan.
+1.2 Pemangku Kepentingan (Stakeholders)
+Admin Rumah Sakit: Mengelola data pasien, dokter, dan kunjungan.
+Dokter: Melihat riwayat kunjungan pasien.
+Staf Medis: Memasukkan data pasien baru.
+1.3 Fitur Aplikasi
+Manajemen Pasien:
+Tambah, lihat, ubah, dan hapus data pasien.
+Manajemen Dokter:
+Tambah, lihat, ubah, dan hapus data dokter.
+Manajemen Kunjungan:
+Tambah kunjungan, lihat riwayat kunjungan.
+Laporan:
+Menampilkan laporan pasien berdasarkan tanggal kunjungan.
+1.4 Perancangan Database
+Berikut adalah rancangan database sederhana:
+
+Tabel pasien:
+    id_pasien (Primary Key, INT, Auto Increment)
+    nama (VARCHAR)
+    alamat (VARCHAR)
+    tanggal_lahir (DATE)
+    jenis_kelamin (ENUM: 'L', 'P')
+    no_telepon (VARCHAR)
+
+Tabel dokter:
+    id_dokter (Primary Key, INT, Auto Increment)
+    nama (VARCHAR)
+    spesialis (VARCHAR)
+    no_telepon (VARCHAR)
+
+Tabel kunjungan:
+    id_kunjungan (Primary Key, INT, Auto Increment)
+    id_pasien (Foreign Key ke pasien)
+    id_dokter (Foreign Key ke dokter)
+    tanggal_kunjungan (DATE)
+    diagnosis (VARCHAR)
+    tindakan (VARCHAR)
+1.5 Diagram ERD (Entity Relationship Diagram)
+lua
+Copy code
+pasien           dokter            kunjungan
++-------------+  +-------------+   +-----------------+
+| id_pasien   |  | id_dokter   |   | id_kunjungan    |
+| nama        |  | nama        |   | id_pasien (FK)  |
+| alamat      |  | spesialis   |   | id_dokter (FK)  |
+| tanggal_lahir| | no_telepon  |   | tanggal_kunjungan|
+| jenis_kelamin| +-------------+   | diagnosis        |
+| no_telepon  |                  | tindakan         |
++-------------+                  +-----------------+
